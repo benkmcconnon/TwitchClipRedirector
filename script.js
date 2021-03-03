@@ -1,4 +1,4 @@
-var regex = "(?<=\/clip\/).*?(?=[^\A-Za-z0-9-]|$)";
+var regex = "(?<=\/clip\/).*?(?=[^\A-Za-z0-9-_]|$)";
 
 chrome.extension.onMessage.addListener(handleMessage);
 
