@@ -1,0 +1,31 @@
+{
+    "name": "Twitch Clip Redirector",
+    "description": "Redirects Twitch clips to standalone clips.twitch.tv page",
+    "version": "1.0",
+    "manifest_version": 2,
+
+    "permissions": [
+        "tabs"
+    ],
+
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [{
+        "matches": ["*://*.twitch.tv/*"
+        ],
+        "js": ["script.js"]
+    }],
+
+    "browser_action": {
+        "default_icon" : "/images/active-icon128.png",
+        "icons" : {
+            "16" : "/images/active-icon16.png",
+            "48" : "/images/active-icon48.png",
+            "128": "/images/active-icon128.png"
+        }
+    }
+
+}
