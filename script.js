@@ -1,10 +1,11 @@
 var regex = "(?<=\/clip\/).*?(?=[^\A-Za-z0-9-_]|$)";
 
-chrome.extension.onMessage.addListener(handleMessage);
-
-//Checks if URL is twitch.tv clip page
-function handleMessage(request) {
-    if (request.data.match(regex)) {
-        chrome.runtime.sendMessage({redirect: "http://clips.twitch.tv/" + request.data.match(regex)});
-    };
-};
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log("Message recieved: " + request.url);
+        // listen for messages sent from background.js
+        if (request.url.match(regex)) {
+            console.log("Twitch clip found!");
+            chrome.runtime.sendMessage({redirect: "http://clips.twitch.tv/" + request.url.match(regex)});
+        };
+  });
